@@ -1,0 +1,3 @@
+Access type: Random		Size: 5000000
+		Build Time: 268694ns
+		Query Time: 34033346ns

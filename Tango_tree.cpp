@@ -4,23 +4,6 @@ using namespace std;
 using namespace std::chrono;
 
 
-class timer{
-    public:
-        void start(void){ 
-            flag_one = high_resolution_clock::now(); return;
-        }
-        void stop(void){ 
-            flag_two = high_resolution_clock::now(); return;
-        }
-        void timeElapsed(void){ 
-            auto duration = duration_cast<nanoseconds>(flag_two - flag_one);
-            cout<<setprecision(2)<<fixed<<duration.count()/1000;
-        }
-
-    private:
-        std::chrono::_V2::system_clock::time_point flag_one,flag_two;
-};
-
 
 
 class TangoTree{
@@ -282,67 +265,7 @@ bool TangoTree::query(size_t key){
     return true;
 }
 
-void tester(string &type, int size){
-    timer clk; 
-    clk.start(); 
-    TangoTree tre(size); 
-    clk.stop();
-    cout<<"Access type: "<<type<<"\t\tSize: "<<size<<endl<<"\t\tBuild Time: ";
-    clk.timeElapsed();
-    cout<<"ns"<<endl<<"\t\t";
-    
-    if(type == "Sequential"){
-        clk.start();
-        for(int i=0;i<size;i++){
-            tre.query(i);
-        }
-        clk.stop();
-        cout<<"Query Time: ";
-        clk.timeElapsed();
-        cout<<"ns"<<endl;
-        //tre.display();
-    }
-    
-    if(type == "Reverse"){
-        clk.start();
-        for(int i=size-1;i>=0;i--){
-            tre.query(i);
-        }
-        clk.stop();
-        cout<<"Query Time: ";
-        clk.timeElapsed();
-        cout<<"ns"<<endl;
-    }
-    
-    if(type == "Random"){
-        vector<int> sequence;
-        for(int i=0;i<size;i++){
-            sequence.push_back(i);
-        }
-        random_shuffle(sequence.begin(),sequence.end()); 
-        clk.start();
-        for(int i=0;i<size;i++){ 
-            tre.query(sequence[i]);
-        }
-        clk.stop();
-        cout<<"Query Time: ";
-        clk.timeElapsed();
-        cout<<"ns"<<endl;
-    }
-    if(type == "One"){
-        clk.start();
-        int tmp = size;
-        
-        for(int i=0;i<size;i++){ 
-            tre.query(tmp);
-        }
-        clk.stop();
-        cout<<"Query Time: ";
-        clk.timeElapsed();
-        cout<<"ns"<<endl;
-    }
-    return;
-}
+
 
 void TangoTree::explore(TangoTree::Node *cur){
     
@@ -367,25 +290,4 @@ void TangoTree::explore(TangoTree::Node *cur){
     return;
 }
 
-int main(){
-    cout<<"Tango Tree:"<<endl;
-    
-    
-    string access = "Sequential"; 
-    tester(access,500);
-    tester(access,50000);
-    tester(access,5000000);
-    access = "Reverse"; 
-    tester(access,500);
-    tester(access,50000);
-    tester(access,5000000);
-    access = "Random"; 
-    tester(access,500);
-    tester(access,50000);
-    tester(access,5000000);
-    access = "One"; 
-    tester(access,500);
-    tester(access,50000);
-    tester(access,5000000);
-    return 0;
-}
+

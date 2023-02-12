@@ -1,0 +1,3 @@
+Access type: Reverse		Size: 50000
+		Build Time: 1420ns
+		Query Time: 40020ns

@@ -1,0 +1,3 @@
+Access type: Sequential		Size: 50000
+		Build Time: 4273ns
+		Query Time: 53440ns

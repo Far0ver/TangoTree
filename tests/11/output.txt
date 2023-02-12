@@ -1,0 +1,3 @@
+Access type: One		Size: 50000
+		Build Time: 1392ns
+		Query Time: 705ns
