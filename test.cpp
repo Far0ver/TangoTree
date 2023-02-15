@@ -41,7 +41,6 @@ void tester(string &type, int size, string output_path){
         cout<<"Query Time: ";
         cout<<setprecision(2)<<fixed<<clk.timeElapsed();
         cout<<"ns"<<endl;
-        //tre.display();
     }
     
     if(type == "Reverse"){
@@ -97,21 +96,6 @@ int main(){
         cin >> access >> size;
         
         tester(access, size, output_path);
-    }
-    /*
+    } 
 
-    tester(access,5000000);
-    access = "Reverse"; 
-    tester(access,500);
-    tester(access,50000);
-    tester(access,5000000);
-    access = "Random"; 
-    tester(access,500);
-    tester(access,50000);
-    tester(access,5000000);
-    access = "One"; 
-    tester(access,500);
-    tester(access,50000);
-    tester(access,5000000);
-    return 0; */
 }

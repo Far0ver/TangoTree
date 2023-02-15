@@ -4,18 +4,13 @@ using namespace std;
 using namespace std::chrono;
 
 
-
-
 class TangoTree{
     public:        
         TangoTree(const int size);        
         ~TangoTree(void);
 
         bool query(size_t key); 
-        void display(void){ 
-            explore(root);
-            return;
-        }
+        
     
     private:
         struct Node{             
@@ -37,7 +32,6 @@ class TangoTree{
         void splay(Node *cur, Node *top);
         void switchPath(Node *cur);
         void expose(Node *cur);
-        void explore(Node *cur);
         Node *refParent(Node *cur, int num); 
 };
 
@@ -66,6 +60,7 @@ TangoTree::~TangoTree(void){
             Node *next = root->right;
             delete root; 
             root = next;
+            
         }
 
         else{
@@ -264,30 +259,3 @@ bool TangoTree::query(size_t key){
     expose(curr);
     return true;
 }
-
-
-
-void TangoTree::explore(TangoTree::Node *cur){
-    
-    if(!cur) return;
-    
-    cout<<"Parent of "<<cur->key<<" = ";
-    
-    if(cur->parent){
-        cout<<cur->parent->key;
-    }
-    
-    else{
-        cout<<"NULL";
-    }
-    
-    if(cur->isRoot) cout<<", "<<cur->key<<" is a Root";
-    cout<<endl;
-    
-    explore(cur->left);
-    
-    explore(cur->right);
-    return;
-}
-
-
